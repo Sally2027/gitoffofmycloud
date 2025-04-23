@@ -3,6 +3,7 @@ $(window).on('load', function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: true,
+        arrows: false,
         asNavFor: '.slider-nav'
       });
       
