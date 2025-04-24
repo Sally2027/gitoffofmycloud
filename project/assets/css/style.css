@@ -233,6 +233,42 @@ html {
 }
 
 
+/*  ---------------Float Slider-----------------  */
+
+.slick{
+  width: 70%;
+  max-width: 750px;
+  display: block;
+  margin: 0 auto;
+
+}
+
+/*  ---------------Cabins and Float Content-----------------  */
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.content h2{
+  font-size: 3rem;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+}
+
+.content p, li{
+  font-size: 1.2rem;
+}
+.left-side {
+  grid-column: 3 / 6;
+}
+
+.right-side {
+  grid-column: 7 / 12;
+}
+
+
 /*  ---------------Water Level-----------------  */
 
 .buttons{
