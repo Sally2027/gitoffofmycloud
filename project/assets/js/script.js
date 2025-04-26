@@ -43,7 +43,7 @@ const navList = document.querySelector('.nav-list');
 
 hamburger.addEventListener('click', () => {
   navList.classList.toggle('active');
-  document.body.classList.toggle('#menu-open');
+  document.body.classList.toggle('menu-open');
 });
 });
 
