@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=36.0809&longitude=-92.5716&daily=temperature_2m_min,temperature_2m_max,rain_sum&hourly=temperature_2m,rain,precipitation,showers&current=temperature_2m,rain,showers&timezone=America%2FChicago&temperature_unit=fahrenheit";
 
     const fetchWeatherData = async () => {
@@ -206,8 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateWeatherUI();
 });
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=36.0809&longitude=-92.5716&daily=temperature_2m_min,temperature_2m_max,rain_sum&hourly=temperature_2m,rain,precipitation,showers&current=temperature_2m,rain,showers&timezone=America%2FChicago&temperature_unit=fahrenheit";
 
@@ -241,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2>Current Weather</h2>
             <p><strong>Temperature:</strong> ${data.current.temperature_2m} °F</p>
             <p><strong>Rain:</strong> ${data.current.rain} inches</p>
-<p><strong>Showers:</strong> ${data.current.showers} inches</p>
+            <p><strong>Showers:</strong> ${data.current.showers} inches</p>
         `;
         currentWeatherContainer.appendChild(currentWeather);
         container.appendChild(currentWeatherContainer);
