@@ -386,7 +386,7 @@ canvas#waterLevelChart {
 
 }
 
-.data-container {
+.forecast-section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 20px;
@@ -396,14 +396,14 @@ canvas#waterLevelChart {
   margin-bottom: 20px;
 }
 
-.data-item:hover{
+.forecast-item:hover{
   background-color: #003f5c;
   color: white;
   transform: scale(1.05);
   transition: transform 0.3s ease;
 }
 
-.data-item {
+.forecast-item {
   background: #008B8B;
   border-radius: 8px;
   padding: 15px;
@@ -411,20 +411,20 @@ canvas#waterLevelChart {
   text-align: center;
 }
 
-.data-item h3 {
+.forecast-item h3 {
   margin-bottom: 10px;
   font-size: 1.2rem;
   color: #ffffff;
 }
 
-.data-item h3:hover {
+.forecast-item h3:hover {
   color: white;
 }
 
-.data-item p:hover {
+.forecast-item p:hover {
   color: white;
 }
-.data-item p {
+.forecast-item p {
   font-size: 1rem;
   color: #ffffff;
 }
