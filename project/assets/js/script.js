@@ -229,41 +229,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById("weatherData");
         container.innerHTML = "";
 
-        // Create a container for current weather
-        const currentWeatherContainer = document.createElement("div");
-        currentWeatherContainer.classList.add("forecast-section");
-
-        const currentWeather = document.createElement("div");
-        currentWeather.classList.add("forecast-item");
-        currentWeather.innerHTML = `
-            <h2>Current Weather</h2>
-            <p><strong>Temperature:</strong> ${data.current.temperature_2m} °F</p>
-            <p><strong>Rain:</strong> ${data.current.rain} inches</p>
-            <p><strong>Showers:</strong> ${data.current.showers} inches</p>
-        `;
-        currentWeatherContainer.appendChild(currentWeather);
-        container.appendChild(currentWeatherContainer);
-
-        // Create a container for weekly forecast
+        // Create ONE container for all weather items
         const forecastContainer = document.createElement("div");
         forecastContainer.classList.add("forecast-section");
 
-        data.daily.time.forEach((day, index) => {
-            const forecastItem = document.createElement("div");
-            forecastItem.classList.add("forecast-item");
+        // Add current weather as the first item
+        const currentWeather = document.createElement("div");
+        currentWeather.classList.add("forecast-item");
+        const currentHourIndex = new Date().getHours();
+        const hourlyTemperature = data.hourly.temperature_2m[currentHourIndex];
 
-            const formattedDate = new Date(day).toLocaleDateString("en-US", { weekday: 'long', month: 'numeric', day: 'numeric' });
+        currentWeather.innerHTML = ` 
+        <h3>Current Weather</h3>
+        <p><strong>Temperature:</strong> ${data.current.temperature_2m} °F</p>
+        <p><strong>Hourly Forecast:</strong> ${hourlyTemperature} °F</p>
+        <p><strong>Rain:</strong> ${data.current.rain} inches</p>
+`      ;
+      forecastContainer.appendChild(currentWeather);
 
-            forecastItem.innerHTML = `
-                <h3>${formattedDate}</h3>
-                <p><strong>High:</strong> ${data.daily.temperature_2m_max[index]} °F</p>
-                <p><strong>Low:</strong> ${data.daily.temperature_2m_min[index]} °F</p>
-                <p><strong>Rain:</strong> ${data.daily.rain_sum[index]} inches</p>
-            `;
-            forecastContainer.appendChild(forecastItem);
-        });
+      // Add the daily forecasts
+      data.daily.time.forEach((day, index) => {
+      const forecastItem = document.createElement("div");
+      forecastItem.classList.add("forecast-item");
 
-        container.appendChild(forecastContainer);
+      const formattedDate = new Date(day).toLocaleDateString("en-US", { weekday: 'long', month: 'numeric', day: 'numeric' });
+
+      forecastItem.innerHTML = `
+        <h3>${formattedDate}</h3>
+        <p><strong>High:</strong> ${data.daily.temperature_2m_max[index]} °F</p>
+        <p><strong>Low:</strong> ${data.daily.temperature_2m_min[index]} °F</p>
+        <p><strong>Rain:</strong> ${data.daily.rain_sum[index]} inches</p>
+    `;
+    forecastContainer.appendChild(forecastItem);
+});
+
+      container.appendChild(forecastContainer);
+
     };
 
     updateWeatherUI();
